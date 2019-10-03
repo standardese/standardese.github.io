@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/010_lexial/</loc>
+    <lastmod>2019-09-16T10:35:36+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/010_lexial/010_example/</loc>
+    <lastmod>2019-02-11T19:27:37+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/020_blocks/</loc>
+    <lastmod>2019-09-16T10:35:36+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/010_lexial/020_example/</loc>
+    <lastmod>2019-02-11T19:27:37+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/010_lexial/030_example/</loc>
+    <lastmod>2019-02-11T19:27:37+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/999_other/</loc>
+    <lastmod>2019-09-16T10:35:36+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2018-11-28T15:14:39+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+  </url>
+  
+</urlset>

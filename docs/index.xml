@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>FOL on standardese</title>
+    <link>/</link>
+    <description>Recent content in FOL on standardese</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 28 Nov 2018 15:14:39 +1000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Example 1</title>
+      <link>/010_lexial/010_example/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>/010_lexial/010_example/</guid>
+      <description>standardese looks for documentation comments as shown in the following example:
+/// A regular C++ style documentation comment. /// Multiple C++ style comments are merged automatically. /// This line has *two* leading whitespaces because one is always skipped. //! A C++ style comment using an exclamation mark. /// It will also merge with other C++ style comments. //! But don&#39;t worry, also with the exclamation mark styles. /** A C style documentation commment.</description>
+    </item>
+    
+    <item>
+      <title>Example 2</title>
+      <link>/010_lexial/020_example/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>/010_lexial/020_example/</guid>
+      <description>standardese looks for documentation comments as shown in the following example:
+/// A regular C++ style documentation comment. /// Multiple C++ style comments are merged automatically. /// This line has *two* leading whitespaces because one is always skipped. //! A C++ style comment using an exclamation mark. /// It will also merge with other C++ style comments. //! But don&#39;t worry, also with the exclamation mark styles. /** A C style documentation commment.</description>
+    </item>
+    
+    <item>
+      <title>Example 3</title>
+      <link>/010_lexial/030_example/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>/010_lexial/030_example/</guid>
+      <description>standardese looks for documentation comments as shown in the following example:
+/// A regular C++ style documentation comment. /// Multiple C++ style comments are merged automatically. /// This line has *two* leading whitespaces because one is always skipped. //! A C++ style comment using an exclamation mark. /// It will also merge with other C++ style comments. //! But don&#39;t worry, also with the exclamation mark styles. /** A C style documentation commment.</description>
+    </item>
+    
+  </channel>
+</rss>
