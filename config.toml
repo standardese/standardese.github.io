@@ -1,4 +1,4 @@
-baseURL = "/"
+baseURL = "https://standardese.github.io/website/"
 languageCode = "en-us"
 title = "standardese"
 theme = "doku-learn"
