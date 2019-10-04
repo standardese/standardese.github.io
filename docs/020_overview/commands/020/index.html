@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Categories :: standardese</title>
+    <title>Inline :: standardese</title>
 
     
     <link href="/css/nucleus.css?1570155495" rel="stylesheet">
@@ -40,7 +40,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/020_overview/commands/020/">
     <nav id="sidebar" class="">
 
 
@@ -190,7 +190,7 @@
   
     
     <li data-nav-id="/020_overview/" title="Overview" class="dd-item 
-        
+        parent
         
         
         ">
@@ -293,7 +293,7 @@
   
     
     <li data-nav-id="/020_overview/commands/" title="Special commands" class="dd-item 
-        
+        parent
         
         
         ">
@@ -355,7 +355,7 @@
  
   
     
-      <li data-nav-id="/020_overview/commands/020/" title="Inline" class="dd-item ">
+      <li data-nav-id="/020_overview/commands/020/" title="Inline" class="dd-item active">
         <a href="/020_overview/commands/020/">
         Inline
         
@@ -491,7 +491,19 @@
             
           
           
-            <a href='/'>STANDARDESE</a> > Categories
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>STANDARDESE</a> > <a href='/020_overview/'>Overview</a> > <a href='/020_overview/commands/'>Special commands</a> > Inline
+          
+        
+          
+        
           
         
           
@@ -518,7 +530,7 @@
           
             <h1>
               
-              Categories
+              Inline
             </h1>
           
 
@@ -526,17 +538,35 @@
 
 
 
+<p>A <em>inline</em> is a special kind of command.
+They are <code>param</code>, <code>tparam</code> and <code>base</code> and used to document (template) parameters and base classes,
+because you cannot put a corresponding comment there.
+As such they are shorthands for the <code>\entity unique-name</code> command.
+They are followed by the name of entity they refer to.</p>
 
+<p>The <em>inline</em> and argument is stripped from the text.
+The rest of the line will be treated as <code>brief</code> documentation.
+Like a <em>section</em>, an <em>inline</em> ends when a new special command or hard line break is encountered or a paragraph ends.
+You can include sections in inlines, however.</p>
 
+<p>For example:</p>
 
-<ul>
-	
-</ul>
+<pre><code class="language-cpp">/// Normal documentation for the function.
+///
+/// \param foo Brief documentation for the parameter `foo`.
+/// It continues here with details.
+/// \param bar
+/// \exclude
+///
+/// The `\exclude` is part of the documentation for `bar`.
+void func(int foo, int bar);
+</code></pre>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -652,20 +682,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -682,6 +698,25 @@
             
                 
                     
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
                 
                 
 
@@ -694,6 +729,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -727,87 +765,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -831,6 +788,9 @@
             
                 
                     
+                        
+                        
+                    
                 
                 
 
@@ -846,6 +806,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -858,6 +819,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -891,87 +855,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -995,6 +878,25 @@
             
                 
                     
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
                 
                 
 
@@ -1007,6 +909,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1040,6 +945,169 @@
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
                 
                 
 
@@ -1059,6 +1127,9 @@
             
                 
                     
+                        
+                        
+                    
                 
                 
 
@@ -1074,6 +1145,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1086,6 +1158,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1119,6 +1194,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1143,6 +1219,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1164,8 +1243,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/020_overview/commands/011/" title="Section"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/010_start/" title="Getting started" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/999_other/" title="Other Features" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1195,3 +1276,4 @@
 
   </body>
 </html>
+

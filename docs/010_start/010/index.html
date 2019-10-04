@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Categories :: standardese</title>
+    <title>Basic Example :: standardese</title>
 
     
     <link href="/css/nucleus.css?1570155495" rel="stylesheet">
@@ -40,7 +40,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/010_start/010/">
     <nav id="sidebar" class="">
 
 
@@ -82,7 +82,7 @@
   
     
     <li data-nav-id="/010_start/" title="Getting started" class="dd-item 
-        
+        parent
         
         
         ">
@@ -106,7 +106,7 @@
  
   
     
-      <li data-nav-id="/010_start/010/" title="Basic Example" class="dd-item ">
+      <li data-nav-id="/010_start/010/" title="Basic Example" class="dd-item active">
         <a href="/010_start/010/">
         Basic Example
         
@@ -491,7 +491,13 @@
             
           
           
-            <a href='/'>STANDARDESE</a> > Categories
+            
+            
+          
+          
+            <a href='/'>STANDARDESE</a> > <a href='/010_start/'>Getting started</a> > Basic Example
+          
+        
           
         
           
@@ -518,7 +524,7 @@
           
             <h1>
               
-              Categories
+              Basic Example
             </h1>
           
 
@@ -526,17 +532,59 @@
 
 
 
+<p>Consider the following C++ header file named <code>swap.hpp</code>:</p>
 
+<pre><code class="language-cpp">#include &lt;type_traits&gt;
 
+namespace std
+{
 
-<ul>
-	
-</ul>
+    /// \effects Exchanges values stored in two locations.
+    /// \requires Type `T` shall be `MoveConstructible` and `MoveAssignable`.
+    template &lt;class T&gt;
+    void swap(T &amp;a, T &amp;b) noexcept(is_nothrow_move_constructible&lt;T&gt;::value &amp;&amp;
+                                    is_nothrow_move_assignable&lt;T&gt;::value);
+}
+</code></pre>
+
+<p>This will generate the following documentation:</p>
+
+<p>#Header file <code>swap.hpp</code></p>
+
+<pre><code class="language-cpp"> #include &lt;type_traits&gt;
+
+ namespace std
+ {
+     template &lt;typename T&gt;
+     void swap(T &amp; a, T &amp; b) noexcept(is_nothrow_move_constructible&lt;T&gt;::value &amp;&amp;
+     is_nothrow_move_assignable&lt;T&gt;::value);
+ }
+</code></pre>
+
+<p>##Function template <code>swap&lt;T&gt;</code></p>
+
+<pre><code class="language-cpp"> template &lt;typename T&gt;
+ void swap(T &amp; a, T &amp; b) noexcept(is_nothrow_move_constructible&lt;T&gt;::value &amp;&amp;
+ is_nothrow_move_assignable&lt;T&gt;::value);
+</code></pre>
+
+<p><em>Effects:</em> Exchanges values stored in two locations.</p>
+
+<p><em>Requires:</em> Type <code>T</code> shall be <code>MoveConstructible</code> and <code>MoveAssignable</code>.</p>
+
+<p>The example makes it already clear:
+Standardese aims to provide a documentation in a similar way to the C++ standard - hence the name.</p>
+
+<p>This means that it provides commands to introduce so called <em>sections</em> in the documentation.
+The current sections are all the C++ standard lists in <code>[structure.specifications]/3</code> like <code>\effects</code>, <code>\requires</code>, <code>\returns</code> and <code>\throws</code>.</p>
+
+<p>Read more in the introductory <a href="http://foonathan.github.io/blog/2016/05/06/standardese-nextgen-doxygen.html">blog post</a>.</p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -569,8 +617,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -584,6 +630,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -600,6 +647,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1164,8 +1214,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/010_start/" title="Getting started"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/010_start/" title="Getting started" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/010_start/011/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1195,3 +1247,4 @@
 
   </body>
 </html>
+

@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Categories :: standardese</title>
+    <title>Section :: standardese</title>
 
     
     <link href="/css/nucleus.css?1570155495" rel="stylesheet">
@@ -40,7 +40,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/020_overview/commands/011/">
     <nav id="sidebar" class="">
 
 
@@ -190,7 +190,7 @@
   
     
     <li data-nav-id="/020_overview/" title="Overview" class="dd-item 
-        
+        parent
         
         
         ">
@@ -293,7 +293,7 @@
   
     
     <li data-nav-id="/020_overview/commands/" title="Special commands" class="dd-item 
-        
+        parent
         
         
         ">
@@ -336,7 +336,7 @@
  
   
     
-      <li data-nav-id="/020_overview/commands/011/" title="Section" class="dd-item ">
+      <li data-nav-id="/020_overview/commands/011/" title="Section" class="dd-item active">
         <a href="/020_overview/commands/011/">
         Section
         
@@ -491,7 +491,19 @@
             
           
           
-            <a href='/'>STANDARDESE</a> > Categories
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>STANDARDESE</a> > <a href='/020_overview/'>Overview</a> > <a href='/020_overview/commands/'>Special commands</a> > Section
+          
+        
+          
+        
           
         
           
@@ -518,7 +530,7 @@
           
             <h1>
               
-              Categories
+              Section
             </h1>
           
 
@@ -526,17 +538,66 @@
 
 
 
+<p>A <em>section</em> is the basic way of standardese documentation.
+It supports all the sections the C++ standard uses, as explained in the example.
+Those sections will create a paragraph in the output prefixed with a human readable name.
+There are two special sections, <code>brief</code> and <code>details</code>.
+They are not labeled in the output.</p>
 
+<p>Unlike for a <em>command</em> text following a <em>section</em> is included in the output.
+A <em>section</em> is active for the rest of the paragraph, a hard line break or until another special command is encountered.
+Any <code>brief</code> sections will be merged together automatically.</p>
 
+<p>If you don&rsquo;t specify a section for a paragraph, the first paragraph will be implictly <code>brief</code>, all others implictly <code>details</code>.</p>
 
-<ul>
-	
-</ul>
+<pre><code class="language-cpp">/// \brief This text is brief.
+///
+/// This is implictly details.
+/// \effects This is effects.
+/// This is still effects.
+/// \returns This is returns./
+/// Due to the hard break this is details again.
+///
+/// \notes This is notes.
+/// \notes This is a different notes.
+</code></pre>
+
+<p>If you have a section with the form <code>\&lt;section&gt; &lt;arg&gt; - &lt;text&gt;</code>, it will generate a key value list in the output.
+Then you can also add other key-value pairs in each line.
+Use <code>_</code> as argument for an empty key.
+Surround the argument in <code>[&lt;arg&gt;]</code> and it will create a link where <code>&lt;arg&gt;</code> is also the destination,
+i.e. like a regular entity link of the form <code>[&lt;arg&gt;]()</code>.</p>
+
+<p><em>Note: Due to implementation reason you can&rsquo;t use a real CommonMark link as key.</em></p>
+
+<p>The value consists of CommonMark inline formatting until the reset of the section or a new key is encountered.
+For example:</p>
+
+<pre><code class="language-cpp">/// This is documentation text (implictly brief btw).
+/// \returns 0 - Everything okay (first key-value pair).
+/// 1 - There was an input error (second key-value pair).
+/// This is *still* the second key-value pair.
+///
+/// This is normal text as the paragraph ended.
+</code></pre>
+
+<p>This will generate a list of possible return values in the output.</p>
+
+<p>This is also how the <code>see</code> section is intended:</p>
+
+<pre><code class="language-cpp">/// Some documentation...
+/// \see [this_type] - Put a description here (optional)
+/// [this_func()] -
+/// [std::vector&lt;T&gt;] -
+</code></pre>
+
+<p>It will generate a &ldquo;See also:&rdquo; list in the output with links to the entities.</p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -652,20 +713,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -682,6 +729,25 @@
             
                 
                     
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
                 
                 
 
@@ -694,6 +760,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -711,71 +780,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -793,21 +797,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
+                        
                     
                 
                 
@@ -846,6 +837,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -858,6 +850,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -875,71 +870,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -957,21 +887,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
+                        
                     
                 
                 
@@ -1000,6 +917,8 @@
 
                     
                     
+                        
+                    
                     
 
                     
@@ -1007,6 +926,23 @@
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1024,68 +960,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -1103,6 +977,63 @@
             
                 
                     
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
                 
                 
 
@@ -1118,6 +1049,188 @@
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1164,8 +1277,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/020_overview/commands/010/" title="Command"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/010_start/" title="Getting started" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/020_overview/commands/020/" title="Inline" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1195,3 +1310,4 @@
 
   </body>
 </html>
+

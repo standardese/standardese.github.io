@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Special commands on standardese</title>
+    <link>https://standardese.github.io/020_overview/commands/</link>
+    <description>Recent content in Special commands on standardese</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 16 Sep 2019 10:35:36 +0000</lastBuildDate>
+    
+	<atom:link href="https://standardese.github.io/020_overview/commands/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Command</title>
+      <link>https://standardese.github.io/020_overview/commands/010/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/020_overview/commands/010/</guid>
+      <description>A command is used to control the documentation generation in some way. A text that begins with a command doesn&amp;rsquo;t appear in the output documentation at all.
+There are the following commands:
+ verbatim - This command isn&amp;rsquo;t like the other commands. It can happen anywhere in a line — i.e. where CommonMark allows an inline entity like emphasis. The text following the command until an end command or the end of the line will be inserted as-is into the output.</description>
+    </item>
+    
+    <item>
+      <title>Section</title>
+      <link>https://standardese.github.io/020_overview/commands/011/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/020_overview/commands/011/</guid>
+      <description>A section is the basic way of standardese documentation. It supports all the sections the C++ standard uses, as explained in the example. Those sections will create a paragraph in the output prefixed with a human readable name. There are two special sections, brief and details. They are not labeled in the output.
+Unlike for a command text following a section is included in the output. A section is active for the rest of the paragraph, a hard line break or until another special command is encountered.</description>
+    </item>
+    
+    <item>
+      <title>Inline</title>
+      <link>https://standardese.github.io/020_overview/commands/020/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/020_overview/commands/020/</guid>
+      <description>A inline is a special kind of command. They are param, tparam and base and used to document (template) parameters and base classes, because you cannot put a corresponding comment there. As such they are shorthands for the \entity unique-name command. They are followed by the name of entity they refer to.
+The inline and argument is stripped from the text. The rest of the line will be treated as brief documentation.</description>
+    </item>
+    
+  </channel>
+</rss>

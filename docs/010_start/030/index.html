@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Categories :: standardese</title>
+    <title>CMake :: standardese</title>
 
     
     <link href="/css/nucleus.css?1570155495" rel="stylesheet">
@@ -40,7 +40,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/010_start/030/">
     <nav id="sidebar" class="">
 
 
@@ -82,7 +82,7 @@
   
     
     <li data-nav-id="/010_start/" title="Getting started" class="dd-item 
-        
+        parent
         
         
         ">
@@ -163,7 +163,7 @@
  
   
     
-      <li data-nav-id="/010_start/030/" title="CMake" class="dd-item ">
+      <li data-nav-id="/010_start/030/" title="CMake" class="dd-item active">
         <a href="/010_start/030/">
         CMake
         
@@ -491,7 +491,13 @@
             
           
           
-            <a href='/'>STANDARDESE</a> > Categories
+            
+            
+          
+          
+            <a href='/'>STANDARDESE</a> > <a href='/010_start/'>Getting started</a> > CMake
+          
+        
           
         
           
@@ -518,7 +524,7 @@
           
             <h1>
               
-              Categories
+              CMake
             </h1>
           
 
@@ -526,17 +532,35 @@
 
 
 
+<p>To ease the compilation options, you can call standardese from CMake like so:</p>
 
+<pre><code>find_package(standardese REQUIRED) # find standardese after installation
 
+# generates a custom target that will run standardese to generate the documentation
+standardese_generate(my_target CONFIG path/to/config_file
+                     INCLUDE_DIRECTORY ${my_target_includedirs}
+                     INPUT ${headers})
+</code></pre>
 
-<ul>
-	
-</ul>
+<p>It will use a custom target that runs standardese.
+You can specify the compilation options and inputs directly in CMake to allow shared variables.
+All other options must be given in a config file.</p>
+
+<p>If you don&rsquo;t have standardese installed, you can also include it directly:</p>
+
+<pre><code>set(STANDARDESE_TOOL /path/to/standardese/binary)
+include(/path/to/standardese/standardese-config.cmake)
+
+# call standardese_generate() like normal
+</code></pre>
+
+<p>See <code>standardese-config.cmake</code> for a documentation of <code>standardese_generate()</code>.</p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -569,8 +593,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -584,6 +606,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -633,6 +658,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -651,6 +677,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1164,8 +1193,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/010_start/020/" title="Command line"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/010_start/" title="Getting started" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/020_overview/" title="Overview" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1195,3 +1226,4 @@
 
   </body>
 </html>
+

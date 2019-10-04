@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Overview on standardese</title>
+    <link>https://standardese.github.io/020_overview/</link>
+    <description>Recent content in Overview on standardese</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 16 Sep 2019 10:35:36 +0000</lastBuildDate>
+    
+	<atom:link href="https://standardese.github.io/020_overview/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Syntax</title>
+      <link>https://standardese.github.io/020_overview/010/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/020_overview/010/</guid>
+      <description>standardese looks for documentation comments as shown in the following example:
+/// A regular C++ style documentation comment. /// Multiple C++ style comments are merged automatically. /// This line has *two* leading whitespaces because one is always skipped. //! A C++ style comment using an exclamation mark. /// It will also merge with other C++ style comments. //! But don&#39;t worry, also with the exclamation mark styles. /** A C style documentation commment.</description>
+    </item>
+    
+    <item>
+      <title>Linking</title>
+      <link>https://standardese.github.io/020_overview/011/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/020_overview/011/</guid>
+      <description>To link to an entity, use the syntax [link-text](&amp;lt;&amp;gt; &amp;quot;unique-name&amp;quot;) (a CommonMark link with empty URL and a title of unique-name). If you don&amp;rsquo;t want a special link-text, this can be shortened to [unique-name]() (a CommonMark link with empty URL and the name of an entity as text). You can also use an URL of the following form [link-text](standardese://unique-name/ &amp;quot;optional-title&amp;quot;) (a normal CommonMark link with the standardese:// protocol, the &amp;lsquo;/&amp;rsquo; at the end is important).</description>
+    </item>
+    
+    <item>
+      <title>External Links</title>
+      <link>https://standardese.github.io/020_overview/020/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/020_overview/020/</guid>
+      <description>You can also link to external documentations via the tool option --comment.external_doc prefix=url. All unique-names starting with prefix will be linked to the url. If the url contains two dollar signs $$, they will be replaced by the unique-name. By default the tool supports http://en.cppreference.com/w/ with a prefix of std:: by default.
+ You can override to a different URL by specifying --comment.external_doc std::=new-url.
+ </description>
+    </item>
+    
+    <item>
+      <title>Name lookup</title>
+      <link>https://standardese.github.io/020_overview/025/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/020_overview/025/</guid>
+      <description>If you prefix a unique name with * or ?, this will do a name lookup, looking for the entity. This only works inside a comment associated with an entity, not in template files etc.
+It does a similar search to the actual name lookup in C++: It starts at the associated entity and appends its scope to the partial unique name given, going to the next higher entity if no matching entity can be found, etc.</description>
+    </item>
+    
+    <item>
+      <title>Template syntax</title>
+      <link>https://standardese.github.io/020_overview/040/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/020_overview/040/</guid>
+      <description>Note: Not implemented on develop at the moment.
+ If you pass a file that is not a source file, it will be treated as template file and processed. This allows advanced control over the output or writing additional documentation files.
+standardese will read the file and replace two things:
+ URLs with the standardese:// protocol will be converted to the correct URL for the given entity. This allows referring to documentation entities from other files without manually having to deal with the URLs.</description>
+    </item>
+    
+  </channel>
+</rss>

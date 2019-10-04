@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Categories :: standardese</title>
+    <title>Linking :: standardese</title>
 
     
     <link href="/css/nucleus.css?1570155495" rel="stylesheet">
@@ -40,7 +40,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/020_overview/011/">
     <nav id="sidebar" class="">
 
 
@@ -190,7 +190,7 @@
   
     
     <li data-nav-id="/020_overview/" title="Overview" class="dd-item 
-        
+        parent
         
         
         ">
@@ -235,7 +235,7 @@
  
   
     
-      <li data-nav-id="/020_overview/011/" title="Linking" class="dd-item ">
+      <li data-nav-id="/020_overview/011/" title="Linking" class="dd-item active">
         <a href="/020_overview/011/">
         Linking
         
@@ -491,7 +491,13 @@
             
           
           
-            <a href='/'>STANDARDESE</a> > Categories
+            
+            
+          
+          
+            <a href='/'>STANDARDESE</a> > <a href='/020_overview/'>Overview</a> > Linking
+          
+        
           
         
           
@@ -518,7 +524,7 @@
           
             <h1>
               
-              Categories
+              Linking
             </h1>
           
 
@@ -526,17 +532,39 @@
 
 
 
+<p>To link to an entity, use the syntax <code>[link-text](&lt;&gt; &quot;unique-name&quot;)</code> (a CommonMark link with empty URL and a title of <code>unique-name</code>). If you don&rsquo;t want a special <code>link-text</code>, this can be shortened to <code>[unique-name]()</code> (a CommonMark link with empty URL and the name of an entity as text).
+You can also use an URL of the following form <code>[link-text](standardese://unique-name/ &quot;optional-title&quot;)</code> (a normal CommonMark link with the <code>standardese://</code> protocol, the &lsquo;/&rsquo; at the end is important).
+In either case <code>standardese</code> will insert the correct URL by searching for the entity with the given <code>unique-name</code>.</p>
 
-
+<p>The <code>unique-name</code> of an entity is the name with all scopes, i.e. <code>foo::bar::baz</code>.</p>
 
 <ul>
-	
+<li><p>For templates (but not function templates) you need to append all parameters, i.e. <code>foo&lt;A, B, C&gt;</code>.</p></li>
+
+<li><p>For functions you need to append the signature (parameter types and cv and ref qualifier), i.e. <code>func()</code>, <code>bar(int,char)</code> or <code>type::foo() const &amp;&amp;</code>. If the signature is <code>()</code>, you can omit it.</p></li>
+
+<li><p>For (template) parameters it is of the form <code>function-unique-name.parameter-name</code></p></li>
+
+<li><p>For base classes it is of the form <code>derived-class::base-class</code></p></li>
 </ul>
+
+<p>The <code>unique-name</code> doesn&rsquo;t care about whitespace, so <code>bar(const char*)</code>, <code>bar(const char *)</code> and <code>bar (constchar*)</code> are all the same.
+Because it is sometimes long and ugly, you can override the unique name via the <code>unique_name</code> command (see below).</p>
+
+<blockquote>
+<p>For example you can override <code>bar(long, list, of, parameters)</code> to <code>bar()</code>.
+But keep in mind that it must be unique with regard to all overloads etc.
+Usually numbering would be a good choice, so <code>bar() (1)</code> or similar.</p>
+</blockquote>
+
+<p>You can also use a short <code>unique-name</code> if there aren&rsquo;t multiple entities resolved to the same short name.
+The short name is the <code>unique-name</code> but without a signature or template parameters, i.e. for <code>foo&lt;T&gt;::func&lt;U&gt;(int) const</code>, the short name is <code>foo::func</code>.</p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -652,6 +680,25 @@
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
                 
                 
 
@@ -672,39 +719,8 @@
 
                     
                     
-                        
-                    
                     
 
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
                         
             
@@ -738,6 +754,22 @@
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -748,6 +780,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -763,6 +796,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1164,8 +1200,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/020_overview/commands/020/" title="Inline"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/010_start/" title="Getting started" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/020_overview/commands/" title="Special commands" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1195,3 +1233,4 @@
 
   </body>
 </html>
+

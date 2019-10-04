@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Getting started on standardese</title>
+    <link>https://standardese.github.io/010_start/</link>
+    <description>Recent content in Getting started on standardese</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 16 Sep 2019 10:35:36 +0000</lastBuildDate>
+    
+	<atom:link href="https://standardese.github.io/010_start/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Basic Example</title>
+      <link>https://standardese.github.io/010_start/010/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/010_start/010/</guid>
+      <description>Consider the following C++ header file named swap.hpp:
+#include &amp;lt;type_traits&amp;gt; namespace std { /// \effects Exchanges values stored in two locations. /// \requires Type `T` shall be `MoveConstructible` and `MoveAssignable`. template &amp;lt;class T&amp;gt; void swap(T &amp;amp;a, T &amp;amp;b) noexcept(is_nothrow_move_constructible&amp;lt;T&amp;gt;::value &amp;amp;&amp;amp; is_nothrow_move_assignable&amp;lt;T&amp;gt;::value); }  This will generate the following documentation:
+#Header file swap.hpp
+#include &amp;lt;type_traits&amp;gt; namespace std { template &amp;lt;typename T&amp;gt; void swap(T &amp;amp; a, T &amp;amp; b) noexcept(is_nothrow_move_constructible&amp;lt;T&amp;gt;::value &amp;amp;&amp;amp; is_nothrow_move_assignable&amp;lt;T&amp;gt;::value); }  ##Function template swap&amp;lt;T&amp;gt;</description>
+    </item>
+    
+    <item>
+      <title>Installation</title>
+      <link>https://standardese.github.io/010_start/011/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/010_start/011/</guid>
+      <description>Very Easy: Pre-compiled Binaries TODO
+Easy: Docker The easiest way to build standardese is to download the docker image foonathan/standardese_dev and run it like so:
+docker pull foonathan/standardese_dev docker run -v &amp;quot;/path/to/standardese/source:/root/standardese&amp;quot; -v &amp;quot;$(pwd):/root/output&amp;quot; foonathan/standardese_dev  It will compile standardese as a fully statically linked binary and copy it to the current working directory. The binary is compatible with any Linux distribution.
+Harder: Building From Source The build system takes care of all dependencies automatically, except for two: Boost and libclang.</description>
+    </item>
+    
+    <item>
+      <title>Command line</title>
+      <link>https://standardese.github.io/010_start/020/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/010_start/020/</guid>
+      <description>The tool uses Boost.ProgramOptions for the options parsing, --help gives a good overview.
+Basic usage is: standardese [options] inputs
+The inputs can be both files or directories, in case of directory each file is documented, unless an input option is specified (see below). The tool will currently generate a corresponding Markdown file with the documentation for each file it gets as input. Files that are not source files (determined by the input.</description>
+    </item>
+    
+    <item>
+      <title>CMake</title>
+      <link>https://standardese.github.io/010_start/030/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/010_start/030/</guid>
+      <description>To ease the compilation options, you can call standardese from CMake like so:
+find_package(standardese REQUIRED) # find standardese after installation # generates a custom target that will run standardese to generate the documentation standardese_generate(my_target CONFIG path/to/config_file INCLUDE_DIRECTORY ${my_target_includedirs} INPUT ${headers})  It will use a custom target that runs standardese. You can specify the compilation options and inputs directly in CMake to allow shared variables. All other options must be given in a config file.</description>
+    </item>
+    
+  </channel>
+</rss>

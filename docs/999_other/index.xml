@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Other Features on standardese</title>
-    <link>/999_other/</link>
+    <link>https://standardese.github.io/999_other/</link>
     <description>Recent content in Other Features on standardese</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 16 Sep 2019 10:35:36 +0000</lastBuildDate>
     
-	<atom:link href="/999_other/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://standardese.github.io/999_other/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>

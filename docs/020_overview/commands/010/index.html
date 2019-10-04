@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Categories :: standardese</title>
+    <title>Command :: standardese</title>
 
     
     <link href="/css/nucleus.css?1570155495" rel="stylesheet">
@@ -40,7 +40,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/020_overview/commands/010/">
     <nav id="sidebar" class="">
 
 
@@ -190,7 +190,7 @@
   
     
     <li data-nav-id="/020_overview/" title="Overview" class="dd-item 
-        
+        parent
         
         
         ">
@@ -293,7 +293,7 @@
   
     
     <li data-nav-id="/020_overview/commands/" title="Special commands" class="dd-item 
-        
+        parent
         
         
         ">
@@ -317,7 +317,7 @@
  
   
     
-      <li data-nav-id="/020_overview/commands/010/" title="Command" class="dd-item ">
+      <li data-nav-id="/020_overview/commands/010/" title="Command" class="dd-item active">
         <a href="/020_overview/commands/010/">
         Command
         
@@ -491,7 +491,19 @@
             
           
           
-            <a href='/'>STANDARDESE</a> > Categories
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>STANDARDESE</a> > <a href='/020_overview/'>Overview</a> > <a href='/020_overview/commands/'>Special commands</a> > Command
+          
+        
+          
+        
           
         
           
@@ -518,7 +530,7 @@
           
             <h1>
               
-              Categories
+              Command
             </h1>
           
 
@@ -526,17 +538,147 @@
 
 
 
+<p>A <em>command</em> is used to control the documentation generation in some way.
+A text that begins with a <em>command</em> doesn&rsquo;t appear in the output documentation at all.</p>
 
-
+<p>There are the following <em>commands</em>:</p>
 
 <ul>
-	
+<li><p><code>verbatim</code> - This command isn&rsquo;t like the other commands.
+It can happen anywhere in a line — i.e. where CommonMark allows an inline entity like emphasis.
+The text following the command until an <code>end</code> command or the end of the line will be inserted as-is into the output.</p></li>
+
+<li><p><code>end</code> - This command ends the currently active section, see below.
+This can be used to extend a section to multiple paragraphs.</p></li>
+
+<li><p><code>exclude {arg}</code> - Manually excludes an entity or part of it from the documentation.
+If you don&rsquo;t specify an argument, it won&rsquo;t appear at all, not even in the synopsis.
+It is as if the entity never existed in the first place.
+If you specify <code>return</code> as argument, the return type of the function will be hidden in the synopsis.
+If you specify <code>target</code> as argument, the target of the namespace/type alias or underlying type of the enum will be hidden in the synopsis.</p></li>
+
+<li><p><code>unique_name {name}</code> - Overrides the unique name of an entity (e.g. for linking):</p>
+
+<pre><code class="language-cpp">/// Some documentation.
+/// I can now link to `bar()` by writing [foo]().
+///
+/// \unique_name foo
+void bar(int a, int c);
+</code></pre>
+
+<p>Note that if you override the unique name of a parent entity, this will also affect the unique names of child entities.
+If the unique name starts with &lsquo;*&rsquo; or &lsquo;?&rsquo;, it will be a <em>relative</em> unique name,
+i.e. the unique name of the parent entity will be prepended to it (with seperator &lsquo;::&rsquo; if needed).</p></li>
+
+<li><p><code>output_name {name}</code> - Overrides the output name of a file.
+This will only change the base name, the <code>doc_</code> prefix and extension are still handled separately.
+Useful if there are multiple files with the same base name in a project, e.g a <code>.hpp</code> and <code>.h</code> header.</p></li>
+
+<li><p><code>synopsis {string}</code> - Overrides the synopsis in the output.
+You can pass any string that will be rendered instead of the actual synopsis.
+Use <code>\n</code> to render a newline and use <code>\t</code> to render a tab.</p></li>
+
+<li><p><code>synopsis_return {string}</code> - Like <code>synopsis</code>, but only overrides the return type of the function.</p></li>
+
+<li><p><code>group &lt;name&gt; [heading]</code> - Add the entity to a member group.
+A member group consists of multiple entities that are direct members of the same entity (i.e. class, file, namespace,&hellip;) which will be grouped together in the output.
+For example:</p>
+
+<pre><code class="language-cpp">/// \group foo A heading
+/// This is in the group `foo`.
+/// Because this is the first entity in the group, it will be the &quot;master&quot;.
+/// the group comment will be this comment, the group unique name will be this unique name, ...
+/// The optional heading (everything after the first whitespace) will be shown as heading in the output.
+void func();
+
+/// \group foo
+/// This entity will be added to the same group.
+/// As it is not the first occurence of the group,
+/// this comment here will be ignored.
+/// But you can still use commands to modify this entity.
+void func(int);
+
+/// This entity is not part of the group.
+void func(char);
+
+/// \group foo
+/// But this one is (again, comment ignored).
+void func(short);
+</code></pre>
+
+<p>This will write the synopsis of all group members together and use the documentation text of the first entity.
+The group name only needs to be unique for one given scope.
+<em>Note: It will only show inline documentation for children, so don&rsquo;t use it on containers.</em></p></li>
+
+<li><p><code>module {name}</code> - Add the entity to a module.
+A module is just a way to group entities together,
+it will be inherited by all children.
+There is no need to define a module, but if you do,
+simply use the command in first place of a module and you can add documentation for it:</p>
+
+<pre><code class="language-cpp">/// This is an entity in the module 'bar'.
+/// \module bar
+void foo();
+
+/// \module bar
+/// This is the documentation for the module 'bar',
+/// because the command was the first one.
+</code></pre></li>
+
+<li><p><code>output_section {name}</code> - Generates a little section comment in the synopsis above the entity.
+This is implictly used for member groups with the group name as output section name,
+if the option <code>output.show_group_output_section</code> is <code>true</code> (the default).
+If a member group name starts with &lsquo;-&rsquo;, it will never be used (the minus won&rsquo;t be shown).
+Given the following input:</p>
+
+<pre><code class="language-cpp">/// Some int getter.
+/// \output_section Getter functions
+int get_i();
+
+/// Some float getter.
+float get_f();
+
+/// Some int setter.
+/// \output_section Setter functions
+void set_i(int val);
+
+/// Some float setter.
+void set_f(float f);
+</code></pre>
+
+<p>It will generate a synopsis like this:</p>
+
+<pre><code class="language-cpp">//=== Getter functions ===//
+int get_i();
+
+float get_f();
+
+//=== Setter functions ===//
+void set_i(int val);
+
+void set_f(float f);
+</code></pre></li>
+
+<li><p><code>entity {unique-name}</code> - If put in the first place of a comment, names the entity to document,
+this allows &ldquo;remote&rdquo; comments:</p>
+
+<pre><code class="language-cpp">void foo();
+
+/// \entity foo
+/// This comment has no corresponding entity.
+/// But the command specifies the entity it will belong to.
+</code></pre>
+
+<p>It also mixes with <code>unique_name</code> as you might expect.</p></li>
+
+<li><p><code>file</code> - A shorthand for <code>\entity current-file-name</code>.</p></li>
 </ul>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -652,20 +794,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -682,6 +810,25 @@
             
                 
                     
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
                 
                 
 
@@ -694,6 +841,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -711,87 +859,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -846,6 +915,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -858,6 +928,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -875,87 +946,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -1000,6 +992,8 @@
 
                     
                     
+                        
+                    
                     
 
                     
@@ -1007,6 +1001,40 @@
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1035,6 +1063,149 @@
             
         
                     
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
                         
             
             
@@ -1074,6 +1245,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1086,6 +1258,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -1102,6 +1275,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1164,8 +1340,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/020_overview/commands/" title="Special commands"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/010_start/" title="Getting started" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/020_overview/commands/011/" title="Section" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1195,3 +1373,4 @@
 
   </body>
 </html>
+

@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Categories :: standardese</title>
+    <title>Template syntax :: standardese</title>
 
     
     <link href="/css/nucleus.css?1570155495" rel="stylesheet">
@@ -40,7 +40,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/020_overview/040/">
     <nav id="sidebar" class="">
 
 
@@ -190,7 +190,7 @@
   
     
     <li data-nav-id="/020_overview/" title="Overview" class="dd-item 
-        
+        parent
         
         
         ">
@@ -383,7 +383,7 @@
  
   
     
-      <li data-nav-id="/020_overview/040/" title="Template syntax" class="dd-item ">
+      <li data-nav-id="/020_overview/040/" title="Template syntax" class="dd-item active">
         <a href="/020_overview/040/">
         Template syntax
         
@@ -491,7 +491,13 @@
             
           
           
-            <a href='/'>STANDARDESE</a> > Categories
+            
+            
+          
+          
+            <a href='/'>STANDARDESE</a> > <a href='/020_overview/'>Overview</a> > Template syntax
+          
+        
           
         
           
@@ -518,7 +524,7 @@
           
             <h1>
               
-              Categories
+              Template syntax
             </h1>
           
 
@@ -526,17 +532,104 @@
 
 
 
+<blockquote>
+<p><em>Note:</em> Not implemented on develop at the moment.</p>
+</blockquote>
 
+<p>If you pass a file that is not a source file, it will be treated as template file and processed.
+This allows advanced control over the output or writing additional documentation files.</p>
 
+<p>standardese will read the file and replace two things:</p>
 
 <ul>
-	
+<li><p>URLs with the <code>standardese://</code> protocol will be converted to the correct URL for the given entity.
+This allows referring to documentation entities from other files without manually having to deal with the URLs.</p></li>
+
+<li><p>Special commands inside two curly braces by default (&lsquo;{{ … }}&rsquo;).</p></li>
 </ul>
+
+<blockquote>
+<p>Note: standardese is dumb and does not do any other formatting with the template file otherwise.
+Most importantly, it will create lot of unnecessary empty lines,
+so does not really work with formats where newlines are important.</p>
+</blockquote>
+
+<p>The special commands allow querying standardese for information.
+It will look for delimiters and commands starting with <code>standardese_</code>.
+All other commands will be silently ignored.</p>
+
+<blockquote>
+<p>This allows mixing &ldquo;normal&rdquo; template syntax with standardese syntax.
+Process the file with standardese, then your template engine.</p>
+</blockquote>
+
+<p>There are the following commands available,
+<code>entity</code> always means the unique name of an entity here.</p>
+
+<ul>
+<li><p><code>standardese_doc &lt;entity&gt; &lt;format&gt;</code>: Will be replaced with the documentation output for <code>entity</code> in the given <code>format</code>.
+For example <code>{{ standardese_doc file.hpp html }}</code> will be replaced with the same HTML standardese will generate for the header file <code>file.hpp</code>.</p></li>
+
+<li><p><code>standardese_doc_text &lt;entity&gt; &lt;format&gt;</code>: Will be replaced with the comment of <code>entity</code> in the given format.</p></li>
+
+<li><p><code>standardese_doc_synopsis &lt;entity&gt; &lt;format&gt;</code>: Will be replaced with the synopsis of <code>entity</code> in the given format.</p></li>
+
+<li><p><code>standardese_doc_anchor &lt;unique_name&gt; &lt;format&gt;</code>: If <code>unique_name</code> refers to an existing entity, all links to that entity will link to the anchor in the template file generated in the given format.
+Otherwise it will create a new entity named <code>unique_name</code> you can link to throughout the documentation.</p></li>
+
+<li><p><code>standardese_name/index_name/unique_name &lt;entity&gt;</code>: Will be replaced with the name/index name/unique name of the given entity (just a raw character sequence without formatting).</p></li>
+
+<li><p><code>standardese_module</code>: Will be replaced by the module name of the given entity (just a raw character sequence without formatting).</p></li>
+
+<li><p><code>standardese_for &lt;variable&gt; &lt;entity&gt;</code>: Will loop over each child of <code>entity</code> and copy the processed next block, the unique name of the current child is stored in the given <code>variable</code>. For example, this will print the names of all children of an entity:</p>
+
+<pre><code>{{ standardese_for $child some_entity }}
+{{ standardese_name $child }}
+{{ standardese_end }}
+</code></pre></li>
+
+<li><p><code>standardese_if/else_if/else &lt;entity&gt; &lt;op&gt; [args...]</code>: Will ignore a block if a condition is not fulfilled. See below for a list of conditions. For example, this will do something different depending on the unique name of an entity:</p>
+
+<pre><code>{{ standardese_if $entity name a }}
+Name is a!
+{{ standardese_else_if $entity name b }}
+Name is b!
+{{ standardese_else }}
+Name is something else.
+{{ standardese_end }}
+</code></pre></li>
+
+<li><p><code>standardese_end</code>: Ends the block that was started last.</p></li>
+</ul>
+
+<p>There are the following if operations available:</p>
+
+<ul>
+<li><p><code>&lt;entity&gt; name &lt;name&gt;</code>: Checks if <code>entity</code> has the given unique name.</p></li>
+
+<li><p><code>&lt;child&gt; first_child &lt;parent&gt;</code>: Checks if <code>child</code> is the first child of <code>parent</code>.</p></li>
+
+<li><p><code>&lt;entity&gt; has_children</code>: Checks if <code>entity</code> has children.</p></li>
+
+<li><p><code>&lt;entity&gt; inline_entity</code>: Checks if <code>entity</code> is an inline entity (parameter, base class, enum value,&hellip;) and inline entities will be shown inline in the documentation output (<code>output.inline_doc</code>).</p></li>
+
+<li><p><code>&lt;entity&gt; member_group</code>: Checks if <code>entity</code> refers to a member group.</p></li>
+
+<li><p><code>&lt;entity&gt; index</code>: Check if <code>entity</code> refers to an index file</p></li>
+</ul>
+
+<p>You can also provide a default template that can be used to customize the output globally.
+Then there are two special variables available: <code>$file</code>, which refers to the current file, and <code>$format</code>, which refers to the set output format.
+The most basic template will just generate the output as standardese would do normally:</p>
+
+<pre><code class="language-cpp">{{ standardese_doc $file $format }}
+</code></pre>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -652,20 +745,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -682,72 +761,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -1000,6 +1015,88 @@
 
                     
                     
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
                     
 
                     
@@ -1059,6 +1156,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1073,6 +1171,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1164,8 +1265,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/020_overview/commands/020/" title="Inline"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/010_start/" title="Getting started" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/020_overview/commands/" title="Special commands" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1195,3 +1298,4 @@
 
   </body>
 </html>
+
