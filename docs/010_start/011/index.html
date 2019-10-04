@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Categories :: standardese</title>
+    <title>Installation :: standardese</title>
 
     
     <link href="/css/nucleus.css?1570155495" rel="stylesheet">
@@ -40,7 +40,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/010_start/011/">
     <nav id="sidebar" class="">
 
 
@@ -82,7 +82,7 @@
   
     
     <li data-nav-id="/010_start/" title="Getting started" class="dd-item 
-        
+        parent
         
         
         ">
@@ -125,7 +125,7 @@
  
   
     
-      <li data-nav-id="/010_start/011/" title="Installation" class="dd-item ">
+      <li data-nav-id="/010_start/011/" title="Installation" class="dd-item active">
         <a href="/010_start/011/">
         Installation
         
@@ -491,7 +491,13 @@
             
           
           
-            <a href='/'>STANDARDESE</a> > Categories
+            
+            
+          
+          
+            <a href='/'>STANDARDESE</a> > <a href='/010_start/'>Getting started</a> > Installation
+          
+        
           
         
           
@@ -502,7 +508,19 @@
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#very-easy-pre-compiled-binaries">Very Easy: Pre-compiled Binaries</a></li>
+<li><a href="#easy-docker">Easy: Docker</a></li>
+<li><a href="#harder-building-from-source">Harder: Building From Source</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -518,7 +536,7 @@
           
             <h1>
               
-              Categories
+              Installation
             </h1>
           
 
@@ -528,15 +546,48 @@
 
 
 
+<h3 id="very-easy-pre-compiled-binaries">Very Easy: Pre-compiled Binaries</h3>
 
-<ul>
-	
-</ul>
+<p>TODO</p>
+
+<h3 id="easy-docker">Easy: Docker</h3>
+
+<p>The easiest way to build standardese is to download the docker image <code>foonathan/standardese_dev</code> and run it like so:</p>
+
+<pre><code>docker pull foonathan/standardese_dev
+docker run -v &quot;/path/to/standardese/source:/root/standardese&quot; -v &quot;$(pwd):/root/output&quot; foonathan/standardese_dev
+</code></pre>
+
+<p>It will compile <code>standardese</code> as a fully statically linked binary and copy it to the current working directory.
+The binary is compatible with any Linux distribution.</p>
+
+<h3 id="harder-building-from-source">Harder: Building From Source</h3>
+
+<p>The build system takes care of all dependencies automatically, except for two: Boost and libclang.</p>
+
+<p>It needs to have Boost.ProgramOptions and Boost.Filesystem as statically linked binaries.
+If they&rsquo;re installed, they should be found automatically.</p>
+
+<p>It also needs libclang.
+If you are under a Linux system, it should find the <code>llvm-config</code> binary automatically and everything works,
+otherwise things are a bit harder.
+Read the <a href="https://github.com/foonathan/cppast#installation">cppast build instructions</a> for more information, they also apply here.</p>
+
+<p>Once they&rsquo;re installed, compiling is a simple:</p>
+
+<pre><code>cmake /path/to/standardese/source
+cmake --build . --target standardese_tool
+</code></pre>
+
+<p>The result is the executable <code>tool/standardese</code>.</p>
+
+<p>TODO: cmake installation</p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -569,8 +620,6 @@
             
                 
                     
-                        
-                        
                     
                 
                 
@@ -584,6 +633,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -601,6 +653,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -616,6 +669,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1164,8 +1220,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/010_start/010/" title="Basic Example"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/010_start/" title="Getting started" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/010_start/020/" title="Command line" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1195,3 +1253,4 @@
 
   </body>
 </html>
+

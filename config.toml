@@ -1,9 +1,10 @@
-baseURL = "https://standardese.github.io/website/"
+baseURL = "https://standardese.github.io/"
 languageCode = "en-us"
 title = "standardese"
 theme = "doku-learn"
 publishDir = "./docs"
 defaultContentLanguage = "en"
+pageversion = "0.0.0"
 
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
@@ -22,6 +23,13 @@ pygmentsUseClasses = true
     identifier = "ds"
     url = "https://github.com/standardese/standardese"
     weight = 10
+
+[[menu.shortcuts]] 
+    name = "<i class='far fa-flag'></i>  - Acknowledgements"
+    identifier = "thank"
+    url = "https://standardese.github.io/thanks/index.html"
+    weight = 20
+
 
 
 [params]

@@ -1,44 +1,160 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>FOL on standardese</title>
-    <link>/</link>
-    <description>Recent content in FOL on standardese</description>
+    <title>STANDARDESE on standardese</title>
+    <link>https://standardese.github.io/</link>
+    <description>Recent content in STANDARDESE on standardese</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 28 Nov 2018 15:14:39 +1000</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://standardese.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Example 1</title>
-      <link>/010_lexial/010_example/</link>
+      <title>Basic Example</title>
+      <link>https://standardese.github.io/010_start/010/</link>
       <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
       
-      <guid>/010_lexial/010_example/</guid>
+      <guid>https://standardese.github.io/010_start/010/</guid>
+      <description>Consider the following C++ header file named swap.hpp:
+#include &amp;lt;type_traits&amp;gt; namespace std { /// \effects Exchanges values stored in two locations. /// \requires Type `T` shall be `MoveConstructible` and `MoveAssignable`. template &amp;lt;class T&amp;gt; void swap(T &amp;amp;a, T &amp;amp;b) noexcept(is_nothrow_move_constructible&amp;lt;T&amp;gt;::value &amp;amp;&amp;amp; is_nothrow_move_assignable&amp;lt;T&amp;gt;::value); }  This will generate the following documentation:
+#Header file swap.hpp
+#include &amp;lt;type_traits&amp;gt; namespace std { template &amp;lt;typename T&amp;gt; void swap(T &amp;amp; a, T &amp;amp; b) noexcept(is_nothrow_move_constructible&amp;lt;T&amp;gt;::value &amp;amp;&amp;amp; is_nothrow_move_assignable&amp;lt;T&amp;gt;::value); }  ##Function template swap&amp;lt;T&amp;gt;</description>
+    </item>
+    
+    <item>
+      <title>Command</title>
+      <link>https://standardese.github.io/020_overview/commands/010/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/020_overview/commands/010/</guid>
+      <description>A command is used to control the documentation generation in some way. A text that begins with a command doesn&amp;rsquo;t appear in the output documentation at all.
+There are the following commands:
+ verbatim - This command isn&amp;rsquo;t like the other commands. It can happen anywhere in a line — i.e. where CommonMark allows an inline entity like emphasis. The text following the command until an end command or the end of the line will be inserted as-is into the output.</description>
+    </item>
+    
+    <item>
+      <title>Syntax</title>
+      <link>https://standardese.github.io/020_overview/010/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/020_overview/010/</guid>
       <description>standardese looks for documentation comments as shown in the following example:
 /// A regular C++ style documentation comment. /// Multiple C++ style comments are merged automatically. /// This line has *two* leading whitespaces because one is always skipped. //! A C++ style comment using an exclamation mark. /// It will also merge with other C++ style comments. //! But don&#39;t worry, also with the exclamation mark styles. /** A C style documentation commment.</description>
     </item>
     
     <item>
-      <title>Example 2</title>
-      <link>/010_lexial/020_example/</link>
+      <title>Installation</title>
+      <link>https://standardese.github.io/010_start/011/</link>
       <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
       
-      <guid>/010_lexial/020_example/</guid>
-      <description>standardese looks for documentation comments as shown in the following example:
-/// A regular C++ style documentation comment. /// Multiple C++ style comments are merged automatically. /// This line has *two* leading whitespaces because one is always skipped. //! A C++ style comment using an exclamation mark. /// It will also merge with other C++ style comments. //! But don&#39;t worry, also with the exclamation mark styles. /** A C style documentation commment.</description>
+      <guid>https://standardese.github.io/010_start/011/</guid>
+      <description>Very Easy: Pre-compiled Binaries TODO
+Easy: Docker The easiest way to build standardese is to download the docker image foonathan/standardese_dev and run it like so:
+docker pull foonathan/standardese_dev docker run -v &amp;quot;/path/to/standardese/source:/root/standardese&amp;quot; -v &amp;quot;$(pwd):/root/output&amp;quot; foonathan/standardese_dev  It will compile standardese as a fully statically linked binary and copy it to the current working directory. The binary is compatible with any Linux distribution.
+Harder: Building From Source The build system takes care of all dependencies automatically, except for two: Boost and libclang.</description>
     </item>
     
     <item>
-      <title>Example 3</title>
-      <link>/010_lexial/030_example/</link>
+      <title>Linking</title>
+      <link>https://standardese.github.io/020_overview/011/</link>
       <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
       
-      <guid>/010_lexial/030_example/</guid>
-      <description>standardese looks for documentation comments as shown in the following example:
-/// A regular C++ style documentation comment. /// Multiple C++ style comments are merged automatically. /// This line has *two* leading whitespaces because one is always skipped. //! A C++ style comment using an exclamation mark. /// It will also merge with other C++ style comments. //! But don&#39;t worry, also with the exclamation mark styles. /** A C style documentation commment.</description>
+      <guid>https://standardese.github.io/020_overview/011/</guid>
+      <description>To link to an entity, use the syntax [link-text](&amp;lt;&amp;gt; &amp;quot;unique-name&amp;quot;) (a CommonMark link with empty URL and a title of unique-name). If you don&amp;rsquo;t want a special link-text, this can be shortened to [unique-name]() (a CommonMark link with empty URL and the name of an entity as text). You can also use an URL of the following form [link-text](standardese://unique-name/ &amp;quot;optional-title&amp;quot;) (a normal CommonMark link with the standardese:// protocol, the &amp;lsquo;/&amp;rsquo; at the end is important).</description>
+    </item>
+    
+    <item>
+      <title>Section</title>
+      <link>https://standardese.github.io/020_overview/commands/011/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/020_overview/commands/011/</guid>
+      <description>A section is the basic way of standardese documentation. It supports all the sections the C++ standard uses, as explained in the example. Those sections will create a paragraph in the output prefixed with a human readable name. There are two special sections, brief and details. They are not labeled in the output.
+Unlike for a command text following a section is included in the output. A section is active for the rest of the paragraph, a hard line break or until another special command is encountered.</description>
+    </item>
+    
+    <item>
+      <title>Command line</title>
+      <link>https://standardese.github.io/010_start/020/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/010_start/020/</guid>
+      <description>The tool uses Boost.ProgramOptions for the options parsing, --help gives a good overview.
+Basic usage is: standardese [options] inputs
+The inputs can be both files or directories, in case of directory each file is documented, unless an input option is specified (see below). The tool will currently generate a corresponding Markdown file with the documentation for each file it gets as input. Files that are not source files (determined by the input.</description>
+    </item>
+    
+    <item>
+      <title>External Links</title>
+      <link>https://standardese.github.io/020_overview/020/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/020_overview/020/</guid>
+      <description>You can also link to external documentations via the tool option --comment.external_doc prefix=url. All unique-names starting with prefix will be linked to the url. If the url contains two dollar signs $$, they will be replaced by the unique-name. By default the tool supports http://en.cppreference.com/w/ with a prefix of std:: by default.
+ You can override to a different URL by specifying --comment.external_doc std::=new-url.
+ </description>
+    </item>
+    
+    <item>
+      <title>Inline</title>
+      <link>https://standardese.github.io/020_overview/commands/020/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/020_overview/commands/020/</guid>
+      <description>A inline is a special kind of command. They are param, tparam and base and used to document (template) parameters and base classes, because you cannot put a corresponding comment there. As such they are shorthands for the \entity unique-name command. They are followed by the name of entity they refer to.
+The inline and argument is stripped from the text. The rest of the line will be treated as brief documentation.</description>
+    </item>
+    
+    <item>
+      <title>Name lookup</title>
+      <link>https://standardese.github.io/020_overview/025/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/020_overview/025/</guid>
+      <description>If you prefix a unique name with * or ?, this will do a name lookup, looking for the entity. This only works inside a comment associated with an entity, not in template files etc.
+It does a similar search to the actual name lookup in C++: It starts at the associated entity and appends its scope to the partial unique name given, going to the next higher entity if no matching entity can be found, etc.</description>
+    </item>
+    
+    <item>
+      <title>CMake</title>
+      <link>https://standardese.github.io/010_start/030/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/010_start/030/</guid>
+      <description>To ease the compilation options, you can call standardese from CMake like so:
+find_package(standardese REQUIRED) # find standardese after installation # generates a custom target that will run standardese to generate the documentation standardese_generate(my_target CONFIG path/to/config_file INCLUDE_DIRECTORY ${my_target_includedirs} INPUT ${headers})  It will use a custom target that runs standardese. You can specify the compilation options and inputs directly in CMake to allow shared variables. All other options must be given in a config file.</description>
+    </item>
+    
+    <item>
+      <title>Template syntax</title>
+      <link>https://standardese.github.io/020_overview/040/</link>
+      <pubDate>Mon, 11 Feb 2019 19:27:37 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/020_overview/040/</guid>
+      <description>Note: Not implemented on develop at the moment.
+ If you pass a file that is not a source file, it will be treated as template file and processed. This allows advanced control over the output or writing additional documentation files.
+standardese will read the file and replace two things:
+ URLs with the standardese:// protocol will be converted to the correct URL for the given entity. This allows referring to documentation entities from other files without manually having to deal with the URLs.</description>
+    </item>
+    
+    <item>
+      <title>Acknowledgements</title>
+      <link>https://standardese.github.io/thanks/</link>
+      <pubDate>Wed, 28 Nov 2018 15:14:39 +1000</pubDate>
+      
+      <guid>https://standardese.github.io/thanks/</guid>
+      <description>Manu @Manu343726 Sánchez, as always
+ Jason @jpleau Pleau, for much feedback and requests on Gitter
+ Mark @DarkerStar Gibbs, for feature suggestions
+ Tristan @tcbrindle Brindle, for (better) clang support
+ Marek @mkurdej Kurdej, for (better) MSVC support
+ Victor @vitaut Zverovich, for bugfixes
+ John @johnmcfarlane McFarlane, for issue reporting
+ Filipe @verri Verri, for maintaining the AUR package
+ @topisani, for issue reporting and bugfixes
+ Trim @bresilla Bresilla, for our logo</description>
     </item>
     
   </channel>

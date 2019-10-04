@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Categories :: standardese</title>
+    <title>Syntax :: standardese</title>
 
     
     <link href="/css/nucleus.css?1570155495" rel="stylesheet">
@@ -40,7 +40,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/020_overview/010/">
     <nav id="sidebar" class="">
 
 
@@ -190,7 +190,7 @@
   
     
     <li data-nav-id="/020_overview/" title="Overview" class="dd-item 
-        
+        parent
         
         
         ">
@@ -216,7 +216,7 @@
  
   
     
-      <li data-nav-id="/020_overview/010/" title="Syntax" class="dd-item ">
+      <li data-nav-id="/020_overview/010/" title="Syntax" class="dd-item active">
         <a href="/020_overview/010/">
         Syntax
         
@@ -491,7 +491,13 @@
             
           
           
-            <a href='/'>STANDARDESE</a> > Categories
+            
+            
+          
+          
+            <a href='/'>STANDARDESE</a> > <a href='/020_overview/'>Overview</a> > Syntax
+          
+        
           
         
           
@@ -518,7 +524,7 @@
           
             <h1>
               
-              Categories
+              Syntax
             </h1>
           
 
@@ -526,17 +532,53 @@
 
 
 
+<p>standardese looks for documentation comments as shown in the following example:</p>
 
+<pre><code class="language-cpp">/// A regular C++ style documentation comment.
+/// Multiple C++ style comments are merged automatically.
+///   This line has *two* leading whitespaces because one is always skipped.
 
+//! A C++ style comment using an exclamation mark.
+/// It will also merge with other C++ style comments.
+//! But don't worry, also with the exclamation mark styles.
 
-<ul>
-	
-</ul>
+/** A C style documentation commment. */
+/** This is a different comment, they aren't merged.
+ * But you can be fancy with the star at the beginning of the line.
+ * It will ignore all whitespace, the star and the first following whitespace.
+ */
+
+/*! You can also use an exclamation mark. */
+/// But neither will merge with any other comment.
+
+int x; //&lt; An end-of-line comment.
+/// It will merge with C++ style comments.
+int y; //&lt; But this is a different end-of-line comment.
+</code></pre>
+
+<p>A comment corresponds to the entity on the line directly below or on the same line.
+You can document all entities that way except files (use <code>file</code> command), namespaces (use <code>entity</code> command),
+and inline entities such as parameters or base classes (use <code>param/tparam/base</code> command or <code>entity</code> command).</p>
+
+<p>Inside the comment you can use arbitrary* Markdown* in the documentation comments and it will be rendered appropriately.</p>
+
+<blockquote>
+<p>The Markdown flavor used is <a href="https://commonmark.org">CommonMark</a>.
+standardese does not support inline HTML (for obvious reasons) or images.
+Inline HTML that isn&rsquo;t a raw HTML block will be treated as literal text.
+This allows writing <code>vector&lt;T&gt;</code> without markup or escaping in the comment, for example.</p>
+</blockquote>
+
+<p><em>Note: CommonMark allows hard line breaks with a backslash at the end of the line.
+But the C preprocessor uses a backslash to combine multiple lines into one.
+For that reason you cannot use a backslash there,
+instead you can use a forward slash.</em></p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -652,20 +694,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -681,6 +709,25 @@
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1164,8 +1211,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/020_overview/" title="Overview"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/010_start/" title="Getting started" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/020_overview/commands/" title="Special commands" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1195,3 +1244,4 @@
 
   </body>
 </html>
+

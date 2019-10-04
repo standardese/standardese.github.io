@@ -3,46 +3,101 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/010_lexial/</loc>
+    <loc>https://standardese.github.io/010_start/</loc>
     <lastmod>2019-09-16T10:35:36+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/010_lexial/010_example/</loc>
+    <loc>https://standardese.github.io/010_start/010/</loc>
     <lastmod>2019-02-11T19:27:37+10:00</lastmod>
   </url>
   
   <url>
-    <loc>/020_blocks/</loc>
+    <loc>https://standardese.github.io/020_overview/commands/010/</loc>
+    <lastmod>2019-02-11T19:27:37+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://standardese.github.io/020_overview/010/</loc>
+    <lastmod>2019-02-11T19:27:37+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://standardese.github.io/010_start/011/</loc>
+    <lastmod>2019-02-11T19:27:37+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://standardese.github.io/020_overview/011/</loc>
+    <lastmod>2019-02-11T19:27:37+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://standardese.github.io/020_overview/commands/011/</loc>
+    <lastmod>2019-02-11T19:27:37+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://standardese.github.io/020_overview/</loc>
     <lastmod>2019-09-16T10:35:36+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/010_lexial/020_example/</loc>
+    <loc>https://standardese.github.io/010_start/020/</loc>
     <lastmod>2019-02-11T19:27:37+10:00</lastmod>
   </url>
   
   <url>
-    <loc>/010_lexial/030_example/</loc>
+    <loc>https://standardese.github.io/020_overview/020/</loc>
     <lastmod>2019-02-11T19:27:37+10:00</lastmod>
   </url>
   
   <url>
-    <loc>/999_other/</loc>
+    <loc>https://standardese.github.io/020_overview/commands/020/</loc>
+    <lastmod>2019-02-11T19:27:37+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://standardese.github.io/020_overview/025/</loc>
+    <lastmod>2019-02-11T19:27:37+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://standardese.github.io/010_start/030/</loc>
+    <lastmod>2019-02-11T19:27:37+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://standardese.github.io/020_overview/commands/</loc>
     <lastmod>2019-09-16T10:35:36+00:00</lastmod>
   </url>
   
   <url>
-    <loc>/</loc>
+    <loc>https://standardese.github.io/020_overview/040/</loc>
+    <lastmod>2019-02-11T19:27:37+10:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://standardese.github.io/999_other/</loc>
+    <lastmod>2019-09-16T10:35:36+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://standardese.github.io/thanks/</loc>
     <lastmod>2018-11-28T15:14:39+10:00</lastmod>
   </url>
   
   <url>
-    <loc>/categories/</loc>
+    <loc>https://standardese.github.io/</loc>
+    <lastmod>2018-11-28T15:14:39+10:00</lastmod>
   </url>
   
   <url>
-    <loc>/tags/</loc>
+    <loc>https://standardese.github.io/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://standardese.github.io/tags/</loc>
   </url>
   
 </urlset>

@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Categories :: standardese</title>
+    <title>Name lookup :: standardese</title>
 
     
     <link href="/css/nucleus.css?1570155495" rel="stylesheet">
@@ -40,7 +40,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/categories/">
+  <body class="" data-url="/020_overview/025/">
     <nav id="sidebar" class="">
 
 
@@ -190,7 +190,7 @@
   
     
     <li data-nav-id="/020_overview/" title="Overview" class="dd-item 
-        
+        parent
         
         
         ">
@@ -273,7 +273,7 @@
  
   
     
-      <li data-nav-id="/020_overview/025/" title="Name lookup" class="dd-item ">
+      <li data-nav-id="/020_overview/025/" title="Name lookup" class="dd-item active">
         <a href="/020_overview/025/">
         Name lookup
         
@@ -491,7 +491,13 @@
             
           
           
-            <a href='/'>STANDARDESE</a> > Categories
+            
+            
+          
+          
+            <a href='/'>STANDARDESE</a> > <a href='/020_overview/'>Overview</a> > Name lookup
+          
+        
           
         
           
@@ -518,7 +524,7 @@
           
             <h1>
               
-              Categories
+              Name lookup
             </h1>
           
 
@@ -526,17 +532,48 @@
 
 
 
+<p>If you prefix a unique name with <code>*</code> or <code>?</code>, this will do a name lookup, looking for the entity.
+This only works inside a comment associated with an entity, not in template files etc.</p>
 
+<p>It does a similar search to the actual name lookup in C++:
+It starts at the associated entity and appends its scope to the partial unique name given,
+going to the next higher entity if no matching entity can be found, etc.</p>
 
+<p>For example:</p>
 
-<ul>
-	
-</ul>
+<p>```cpp
+/// a.
+struct a {};</p>
+
+<p>namespace ns
+{
+    /// ns::a.
+    struct a {};</p>
+
+<pre><code>/// [This will link to ::a, no lookup here](standardese://a/).
+/// [This will link to ns::a](standardese://*a/).
+void foo();
+
+/// b
+template &lt;typename T&gt;
+struct b
+{
+    /// c.
+    void c();
+
+    /// [This will link to ns::b&lt;T&gt;::c()](standardese://*c/).
+    void foo();
+};
+</code></pre>
+
+<p>}
+`</p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -652,20 +689,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -682,72 +705,8 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
                         
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -927,6 +886,92 @@
             
             
                 
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1164,8 +1209,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/020_overview/commands/020/" title="Inline"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/010_start/" title="Getting started" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/020_overview/commands/" title="Special commands" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1195,3 +1242,4 @@
 
   </body>
 </html>
+
