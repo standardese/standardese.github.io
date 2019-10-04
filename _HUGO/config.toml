@@ -1,0 +1,55 @@
+baseURL = "https://standardese.github.io/"
+languageCode = "en-us"
+title = "standardese"
+theme = "doku-learn"
+publishDir = "../"
+defaultContentLanguage = "en"
+pageversion = "0.1.0"
+
+[outputs]
+home = [ "HTML", "RSS", "JSON"]
+
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+pygmentsUseClasses = true
+
+[[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+
+[[menu.shortcuts]] 
+    name = "<i class='fab fa-github'></i>  - Source"
+    identifier = "ds"
+    url = "https://github.com/standardese/standardese"
+    weight = 10
+
+[[menu.shortcuts]] 
+    name = "<i class='far fa-flag'></i>  - Acknowledgements"
+    identifier = "thank"
+    url = "https://standardese.github.io/thanks/index.html"
+    weight = 20
+
+
+
+[params]
+  homepage_button_link = '/docs'
+  homepage_button_text = 'Read The Docs'
+  # homepage_image = '/images/terminal.gif'
+  enable_anchor_link = true
+
+  editURL = ""
+  author = "Standardese Team"
+  description = "Standardese'S documentation page"
+  disableInlineCopyToClipBoard = true
+  showVisitedLinks = false
+  disableSearch = false
+  disableShortcutsTitle = true
+  disableBreadcrumb = false
+  disableNextPrev = false
+  ordersectionsby = "weight"
+  themeVariant = "mine"
+
+  [params.logo]
+      mobile = "logo/logo.svg"
+      standard  = "logo/logo.svg"
