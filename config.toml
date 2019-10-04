@@ -4,7 +4,7 @@ title = "standardese"
 theme = "doku-learn"
 publishDir = "./docs"
 defaultContentLanguage = "en"
-pageversion = "0.0.0"
+pageversion = "0.1.0"
 
 [outputs]
 home = [ "HTML", "RSS", "JSON"]
