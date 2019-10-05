@@ -24,6 +24,7 @@
           {{end}}
         {{end}} 
     </ul>
+    <hr>
 
     {{ $disableShortcutsTitle := .Site.Params.DisableShortcutsTitle}}
     {{with .Site.Menus.shortcuts}}
@@ -84,6 +85,7 @@
       </ul>
     </section>
     {{ end }}
+    <hr>
     <section id="footer">
       {{ partial "menu-footer.html" . }}
     </section>
